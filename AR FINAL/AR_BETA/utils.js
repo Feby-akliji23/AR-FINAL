@@ -26,7 +26,7 @@ window.gltfLoader = new THREE.GLTFLoader();
 window.gltfLoader.setDRACOLoader(dracoLoader);
 
 // load model GLB yang dikompresi Draco
-window.gltfLoader.load('../assets/DUNGKLURUK_FINAL.glb', function (gltf) {
+window.gltfLoader.load('./assets/DUNGKLURUK_FINAL.glb', function (gltf) {
   window.customModel = gltf.scene; // Simpan model untuk digunakan nanti
   window.customModel.scale.set(1.5, 1.5, 1.5);
 }, undefined, function (error) {
