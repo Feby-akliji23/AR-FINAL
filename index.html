@@ -1,0 +1,260 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Building an augmented reality application with the WebXR Device API</title>
+    <link rel="stylesheet" href="https://unpkg.com/material-components-web@latest/dist/material-components-web.min.css">
+    <script src="https://unpkg.com/material-components-web@latest/dist/material-components-web.min.js"></script>
+
+    <!-- Model viewer -->
+    <script type="module" src="https://unpkg.com/@google/model-viewer/dist/model-viewer.min.js"></script>
+    <script src="https://unpkg.com/three@0.126.0/build/three.min.js"></script>
+    <script src="https://unpkg.com/three@0.126.0/examples/js/loaders/GLTFLoader.js"></script>
+    <script src="https://unpkg.com/three@0.126.0/examples/js/controls/OrbitControls.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/three@0.126.0/examples/js/libs/stats.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/three@0.126.0/examples/js/renderers/CSS3DRenderer.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/three@0.126.0/examples/js/loaders/DRACOLoader.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/three@0.126.0/examples/js/loaders/RGBELoader.js"></script>
+
+
+    <link rel="stylesheet" type="text/css" href="app.css" />
+    <script src="utils.js"></script>
+  </head>
+
+  <body>
+     <!-- AR Button -->
+     <div id="enter-ar-info">
+     <button id="enter-ar">View in your space</button>
+     <div id="3Dmodel">
+      <model-viewer id="model-viewer" ,
+      src="./assets/DUNGKLURUK_FINAL.glb" 
+      alt="Dungkluruk" 
+      camera-controls touch-action="none" 
+      camera-orbit="-408.8deg 61.96deg 0.99999m" 
+      camera-target="-0.003m 0.5722m 0.0391m" 
+      field-of-view="45deg" min-field-of-view="25deg"
+      skybox-image="./assets/spruit_sunrise_1k_HDR.hdr"
+      shadow-intensity="1"
+      scale="0.8 0.8 0.8" 
+      max-field-of-view="45deg" 
+      interpolation-decay="200" 
+      min-camera-orbit="auto auto 5%" 
+      style="width: 100%; height: 100vh; position: relative;"
+      ar>
+   
+        <!-- Hotspot Containers -->
+        <div
+          class="container"
+          slot="hotspot-0"
+          data-position="0.15505592718120353m 0.718068453283546m -0.16186038865201313m" 
+          data-normal="0.9584652465723607m 0.28474029782132204m -0.01635034891397459m"
+          data-target="0.15505592718120353m 0.718068453283546m -0.16186038865201313m"
+          data-orbit="-600.3deg 61.96deg 0.4m"
+          data-header="Gunung Merbabu"
+          data-description="Tempat selfie di awan, tapi hati-hati sama anginnya!"
+        >
+          <button class="view-button">1</button>
+          <div class="card">
+            <div class="card-header"></div>
+            <div class="card-body"></div>
+          </div>
+        </div>
+
+        <div
+          class="container"
+          slot="hotspot-2"
+          data-position="0.06947971866342185m 0.602655583102656m 0.09831445561748298m" 
+          data-normal="0.014634861338653344m 0.9986241962359537m 0.05035410137907462m"
+          data-target="0.06947971866342185m 0.602655583102656m 0.09831445561748298m"
+          data-orbit="-413.3deg 77.13deg 0.1233m"
+          data-header="Pendopo"
+          data-description="Debat seru sambil ngopi, siapa takut?"Hey disini main bola ide bagus!
+        >
+          <button class="view-button">2</button>
+          <div class="card">
+            <div class="card-header"></div>
+            <div class="card-body"></div>
+          </div>
+        </div>
+
+        <div
+          class="container"
+          slot="hotspot-3"
+          data-position="0.007413160255497835m 0.5564329426977628m 0.39842374462467817m" 
+          data-normal="-0.026579618669051164m 0.8863583000218535m 0.4622363982355541m"
+          data-target="0.007413160255497835m 0.5564329426977628m 0.39842374462467817m"
+          data-orbit="-427.7deg 67.7deg 0.1385m"
+          data-header="Parkir"
+          data-description="Spot parkir luas dan aman. Mobil kamu juga butuh tempat istirahat yang nyaman!"Debat seru sambil ngopi, siapa takut?
+        >
+          <button class="view-button">3</button>
+          <div class="card">
+            <div class="card-header"></div>
+            <div class="card-body"></div>
+          </div>
+        </div>
+
+
+      <div class="container" slot="hotspot-4" 
+          data-position="0.03939317809594321m 0.6111772816289801m -0.0012988422432999996m" 
+          data-normal="0m 1m 0m"          
+          data-target="0.03939317809594321m 0.6111772816289801m -0.0012988422432999996m"
+          data-orbit="-310deg 66.06deg 0.0878m"
+          data-header="Gardupandang" Burung
+          data-description="Hijau-hijau santai, selfie yuk!">
+        <button class="view-button">4</button>
+        <div class="card">
+          <div class="card-header"></div>
+          <div class="card-body"></div>
+        </div>
+      </div>
+
+      <div class="container" slot="hotspot-5" 
+          data-position="0.011839350981860765m 0.5678023032144419m 0.31811204251748637m" 
+          data-normal="-0.8305168382266753m 0m 0.5569935200897462m"           
+          data-target="0.011839350981860765m 0.5678023032144419m 0.31811204251748637m"
+          data-orbit="-363.7deg 86.56deg 0.02416m"
+          data-header="Toko-Toko" 
+          data-description="Belanja sampe dompet nyerah!">
+        <button class="view-button">5</button>
+        <div class="card">
+          <div class="card-header"></div>
+          <div class="card-body"></div>
+        </div>
+      </div>
+
+
+      <div class="container" slot="hotspot-6" 
+          data-position="0.2309700828759353m 0.6290247939244076m 0.28593301656173103m" 
+          data-normal="0.7785468501108624m 0.6228822225881119m 0.07669771160959285m"
+          data-target="0.2309700828759353m 0.6290247939244076m 0.28593301656173103m"
+          data-orbit="-320.6deg 76.31deg 0.23339m" 
+          data-header="Kalipasang" 
+          data-description="Ini hutan pohon pinus!">
+        <button class="view-button">6</button>
+        <div class="card">
+          <div class="card-header"></div>
+          <div class="card-body"></div>
+        </div>
+      </div>
+
+      <div class="container" slot="hotspot-8" 
+        data-position="-0.029169194570520505m 0.5842319584814567m 0.17922032293205511m" 
+        data-normal="0m 1m 0m"
+        data-target="-0.029169194570520505m 0.5842319584814567m 0.17922032293205511m"
+        data-orbit="-408.8deg 61.96deg 0.155m"
+        data-header="Kolam renang" 
+        data-description="Ayooooo!!!!"> 
+      <button class="view-button">8</button>
+      <div class="card">
+        <div class="card-header"></div>
+        <div class="card-body"></div>
+        </div>
+      </div>
+
+      <div class="container" slot="hotspot-9" 
+      data-position="0.0824117760999461m 0.6061860164003094m 0.007749825116306466m" 
+      data-normal="0m 1m 0m"
+      data-target="0.0824117760999461m 0.6061860164003094m 0.007749825116306466m"
+      data-orbit="-582.2deg 73.85deg 0.0258m"
+      data-header="Mushola" 
+      data-description="Ada tempat ibadah juga lo"> 
+    <button class="view-button">9</button>
+    <div class="card">
+      <div class="card-header"></div>
+      <div class="card-body"></div>
+      </div>
+    </div>
+
+        <!-- Navigation Buttons -->
+        <div class="button-container">
+          <button class="nav-button" id="prev-button">&#9664;</button>
+          <span class="button-text" id="button-text">Home</span>
+          <button class="nav-button" id="next-button">&#9654;</button>
+        </div>
+      </model-viewer>
+  </div>
+</div>
+
+<script type="module">
+  document.addEventListener('DOMContentLoaded', () => {
+      const viewButtons = document.querySelectorAll('.view-button');
+      const prevButton = document.getElementById('prev-button');
+      const nextButton = document.getElementById('next-button');
+      const annotationTitle = document.getElementById('button-text');
+      const modelViewer = document.getElementById('model-viewer');
+      
+      let currentIndex = -1;
+  
+      // Menyimpan posisi default kamera
+      modelViewer.dataset.defaultOrbit = modelViewer.getAttribute('camera-orbit') || '0deg 0deg 1m';
+      modelViewer.dataset.defaultTarget = modelViewer.getAttribute('camera-target') || '0deg 0deg 0m';
+  
+      const updateCameraPosition = (orbit, target) => {
+          modelViewer.setAttribute('camera-orbit', orbit);
+          modelViewer.setAttribute('camera-target', target);
+          modelViewer.setAttribute('field-of-view', '45deg'); // Menetapkan field-of-view untuk zoom
+      };
+  
+      const showAnnotation = (index) => {
+          // Sembunyikan semua kartu dan tombol view
+          document.querySelectorAll('.card').forEach(card => card.style.display = 'none');
+          viewButtons.forEach(button => button.style.display = 'none');
+  
+          if (index !== -1) {
+              const button = viewButtons[index];
+              const container = button.closest('.container');
+              const card = container.querySelector('.card');
+  
+              // Perbarui konten card dan posisi kamera
+              if (card) {
+                  card.querySelector('.card-header').innerText = container.dataset.header;
+                  card.querySelector('.card-body').innerText = container.dataset.description;
+                  updateCameraPosition(container.dataset.orbit, container.dataset.target);
+  
+                  card.style.display = 'block';
+                  button.style.display = 'block'; // Tampilkan view button hanya untuk hotspot aktif
+              }
+              annotationTitle.innerText = button.innerText;
+          } else {
+              annotationTitle.innerText = 'Home';
+              // Kembalikan ke posisi kamera default
+              updateCameraPosition(modelViewer.dataset.defaultOrbit, modelViewer.dataset.defaultTarget);
+          }
+      };
+  
+      viewButtons.forEach((button, index) => {
+          button.addEventListener('click', () => {
+              currentIndex = index;
+              showAnnotation(index);
+          });
+      });
+  
+      prevButton.addEventListener('click', () => {
+          if (currentIndex > 0) {
+              currentIndex -= 1;
+          } else {
+              currentIndex = -1; // Kembali ke Home
+          }
+          showAnnotation(currentIndex);
+      });
+  
+      nextButton.addEventListener('click', () => {
+          if (currentIndex < viewButtons.length - 1) {
+              currentIndex += 1;
+          } else {
+              currentIndex = -1; // Kembali ke Home
+          }
+          showAnnotation(currentIndex);
+      });
+  
+      // Inisialisasi state awal
+      showAnnotation(currentIndex);
+  });
+  </script>
+  
+    <script type="module" src="app.js"></script>
+    <div id="stabilization"></div>
+  </body>
+</html>
